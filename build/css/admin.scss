@@ -1,0 +1,270 @@
+$background-grey:#222B31;
+$background-dark-grey:#191C1F;
+
+$light-grey:#B7B9C5;
+$middle-grey:#7C868C;
+
+$primary-color:#FF424F;
+
+h1, h2, h3, h4, h5, h6 {
+    color:#B7B9C5;
+    font-weight:normal;
+}
+
+h2 {
+    margin:60px 0;
+}
+
+a {
+    color:inherit;
+    text-decoration:none;
+    font-size:inherit;
+}
+
+input[type=text],
+input[type=email],
+input[type=password] {
+    background:#F7F8FA;
+    border:none;
+    color:#333;
+    border-radius:60px;
+    padding:20px 30px;
+    width:100%;
+    box-sizing:border-box;
+    margin-bottom:20px;
+    border:2px solid #F7F8FA;
+}
+
+textarea {
+    background:#F7F8FA;
+    border:none;
+    color:#333;
+    border-radius:10px;
+    padding:20px 30px;
+    width:100%;
+    height:300px;
+    box-sizing:border-box;
+    margin-bottom:20px;
+    border:2px solid #F7F8FA;
+    line-height:1.5em;
+}
+
+input:focus,
+textarea:focus {
+    outline:none;
+    border:2px solid #007AFF;
+}
+
+.btn {
+    display:inline-block;
+    border-radius:60px;
+    padding:20px 30px;
+    background:#E9ECF2;
+    color:#555;
+    font-weight:normal;
+    text-transform:uppercase;
+    border:none;
+    font-size:13px;
+    margin:0 10px;
+    cursor:pointer;
+}
+
+.btn.btn-primary {
+    background:$primary-color;
+    color:#FFF;
+}
+
+.btn.btn-border {
+    background:transparent;
+    color:#E9ECF2;
+    border:1px solid #E9ECF2;
+}
+
+.btn.btn-border.btn-primary {
+    border:1px solid $primary-color;
+    color:$primary-color;
+}
+
+.btn.btn-text {
+    border:1px solid transparent;
+    background:transparent;
+    color:#E9ECF2;
+    border-bottom:1px solid;
+    border-radius:0;
+
+    padding:20px 0 10px;
+    margin:0 40px 10px;
+}
+
+.btn.btn-text.btn-primary {
+    color:$primary-color;
+}
+
+.color-primary {
+    color:$primary-color !important;
+}
+
+.text-center {
+    text-align:center;
+}
+
+.alert {
+    padding:20px;
+    border:1px solid;
+    color:$primary-color;
+    margin-bottom:60px;
+    border-radius:40px;
+    text-align:center;
+}
+
+.alert.alert-success {
+    color:#2DD284;
+}
+
+.alert.alert-info {
+    color:#007AFF;
+}
+
+.alert.alert-danger {
+    color:$primary-color;
+}
+
+.form-actions {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+html {
+    background:$background-dark-grey;
+
+    body {
+        margin:50px 100px;
+        background:$background-grey;
+        font-family:Kanit, sans-serif;
+        border-radius:30px;
+        box-shadow:0 20px 20px 0px rgba(0,0,0,0.05);
+        padding-bottom:50px;
+        color:#B7B9C5;
+
+        header {
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            padding:30px 50px;
+            font-weight:bold;
+            margin-bottom:60px;
+            box-shadow:0 0 20px 15px rgba(0,0,0,0.1);
+            border-radius:30px 30px 0 0;
+            background:#303B42;
+
+            h1 {
+                font-size:inherit;
+            }
+
+            nav {
+                a {
+                    margin-left:15px;
+                }
+            }
+        }
+
+        main {
+            max-width:1400px;
+            margin:0 auto;
+
+            .page-title {
+                display:flex;
+                justify-content:space-between;
+                align-items:center;
+            }
+
+            h2 {
+                margin-bottom:80px;
+            }
+
+            .movies-list {
+
+                display:flex;
+                flex-flow:wrap;
+
+                article {
+                    display:flex;
+                    justify-content:space-around;
+                    align-items:flex-start;
+                    width:560px;
+                    height:232px;
+                    margin-right:54px;
+                    margin-bottom:60px;
+                    background:#303B42;
+                    border-radius:0 10px 10px 0;
+                    padding:40px 40px;
+                    box-shadow:0 0 20px 15px rgba(0,0,0,0.1);
+                    border:none;
+                    line-height:1.5em;
+                    border-left:6px solid #303B42;
+                    transition:border-color 0.2s linear, color 0.2s linear;
+
+                    &:hover {
+                        border-left-color:$primary-color;
+                        color:$primary-color;
+
+                        img {
+                            bottom:80px;
+                        }
+
+                        h3 {
+                            color:$primary-color;
+                        }
+                    }
+
+                    h3 {
+                        transition:color 0.2s linear;
+                    }
+
+                    img {
+                        position:relative;
+                        bottom:70px;
+                        margin-right:40px;
+                        width:200px;
+                        height:300px;
+                        box-shadow:0px 10px 30px 5px rgba(0,0,0,0.5);
+                        transition:bottom 0.2s linear;
+                    }
+
+                    h3 {
+                        margin-top:0;
+                    }
+
+                    p {
+                        text-overflow:ellipsis;
+                        height:147px;
+                        overflow:hidden;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+/*#parentMoviesList {
+    position:relative;
+}
+
+#moviesList {
+    list-style: none;
+    background-color:white;
+    position:absolute;
+    height:400px;
+    width:100%;
+    overflow:auto;
+    display:none;
+    background-clip:padding-box;
+    border:1px solid #ced4da;
+}
+
+#moviesList li {
+    padding:5px;
+}*/

@@ -1,0 +1,53 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Webflix - app
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,300;0,400;0,600;1,100;1,300;1,400;1,600&display=swap" rel="stylesheet"> 
+    link(href="css/main.css" rel="stylesheet")
+    block javascript
+      script(src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous")
+  body(class=menu)
+    header
+      h1 
+        a(href="/") Webflix
+        
+      if session.user
+        a(href="/profile").btn.btn-border.btn-primary #{session.user.firstname} #{session.user.lastname}
+        br
+        a(href="/logout").btn.btn-border Logout
+      else
+        a(href="/login" class=(menu == 'login' ? 'login selected' : '')).btn.btn-primary Connexion
+        br
+        a(href="/register" class=(menu == 'register' ? 'register selected' : '')).btn Inscription
+
+      nav
+        a(href="/" class=(menu == 'home' ? 'selected' : '')) New Releases
+        a(href="/trendings" class=(menu == 'trendings' ? 'selected' : '')) Trending
+        a(href="/comingsoon" class=(menu == 'comingsoon' ? 'selected' : '')) Coming Soon
+        if session.user
+          a(href="/favourites" class=(menu == 'favourites' ? 'selected' : '')) Favourites
+          a(href="/watchlater" class=(menu == 'watchlater' ? 'selected' : '')) Watch Later
+
+    main
+
+      - var messages = getMessages()
+      if messages.success
+        each message in messages.success
+          .alert.alert-success= message
+
+      if messages.info
+        each message in messages.info
+          .alert.alert-info= message
+
+      if messages.error
+        each message in messages.error
+          .alert.alert-danger= message
+
+      block content
+
+    script(src=process.env.BROWSER_REFRESH_URL)

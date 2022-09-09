@@ -1,0 +1,21 @@
+extends ../layout.pug
+ 
+block content   
+    h2 Activer la double authentification
+ 
+    section(style="display:flex;justify-content:flex-start;align-items:flex-start")
+
+        article
+            img(src=qrcode)
+            p
+                strong Nom du compte :&nbsp;
+                span=app_name + ' ' + '(' + userEmail + ')'
+
+            p
+                strong Votre clé :&nbsp;
+                span=secret_doubleauth
+
+        article
+            form(method="POST")
+                input(type="text" id="doubleauth" name="doubleauth" placeholder="Code de validation généré par l'application")
+                button(type="submit").btn.btn-primary Confirmer la double authentification

@@ -1,0 +1,42 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Webflix - admin
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,300;0,400;0,600;0,700;1,100;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet"> 
+    link(href="/css/admin.css" rel="stylesheet")
+    block javascript
+  body
+    header
+        h1
+          a(href="/").color-primary WEBFLIX
+          a(href="/admin") &nbsp;-&nbsp;administration
+
+        if session.user && session.user.isAdmin
+          div
+            a(href="/logout" style="border:none;").btn.btn-text logout
+            a(href="/admin/profile").btn.btn-border #{session.user.firstname} #{session.user.lastname}
+
+    main
+      - var messages = getMessages()
+      
+      if messages.success
+        each message in messages.success
+          .alert.alert-success= message
+
+      if messages.info
+        each message in messages.info
+          .alert.alert-info= message
+
+      if messages.error
+        each message in messages.error
+          .alert.alert-danger= message
+
+    
+      block content
+
+    script(src=process.env.BROWSER_REFRESH_URL)

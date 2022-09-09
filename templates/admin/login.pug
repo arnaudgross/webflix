@@ -1,0 +1,13 @@
+extends layout.pug
+ 
+block content
+    
+        form(method="post" style="width:700px;margin:0 auto;").text-center
+
+            h2 Connectez-vous pour accéder à l'interface
+
+            input.form-control(type="email" id="email" name="email" placeholder="Votre adresse email" value=email)
+            input.form-control(type="password" id="password" name="password" placeholder="Votre mot de passe")
+            input.form-control(type="text" id="doubleauth" name="doubleauth" placeholder="Code de double authentification")
+            a(href="/").btn Annuler
+            button.btn.btn-primary(type="submit") Se connecter

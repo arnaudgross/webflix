@@ -1,0 +1,37 @@
+extends ../layout.pug
+ 
+block content   
+    h2 Modifier le film "#{title}"
+        
+    div(style="display:flex")
+        form(method="post" style="width:700px;")
+            input(type="hidden" name="id_tmdb" id="id_tmdb" value=id_tmdb)
+            input.form-control.basicAutoComplete(type="text" id="title" name="title" autocomplete="off" value=title placeholder="Titre du film")
+            div#parentMoviesList
+                ul#moviesList
+            input.form-control(type="text" id="path" name="path" autocomplete="off" value=path placeholder="Path du film")
+            input.form-control(type="text" id="affiche" name="affiche" value=affiche placeholder="Url de l'affiche")
+            input.form-control(type="number" id="year" name="year" min="1900" max=new Date().getFullYear()+1 value=year placeholder="Année de production")
+            input.form-control(type="text" id="genre" name="genre" value=genre placeholder="Genre (action, science-fiction, comédie, ...)")
+            input.form-control(type="text" id="actors" name="actors" value=actors placeholder="Liste des acteurs")
+            textarea.form-control(type="synopsis" id="synopsis" name="synopsis" value=synopsis placeholder="Synopsis")= synopsis
+            div.form-actions
+                a(href='/admin/movies/delete/' + id_tmdb).btn.btn-primary.btn-text(type="button") Supprimer le film
+                button.btn.btn-primary(type="submit") Enregistrer le film
+    
+        template#movieChoice
+            li
+                img(src="")
+                span.title
+
+        section(style="margin-left:50px;").movies-list
+            article
+                img(src=affiche)
+                div
+                    h3=title
+                    small=genre
+                    p=synopsis
+ 
+ 
+block javascript
+    script(src="/javascript/admin/movies/add.js")

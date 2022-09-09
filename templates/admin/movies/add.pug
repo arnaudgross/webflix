@@ -1,0 +1,28 @@
+extends ../layout.pug
+ 
+block content   
+    h2(style="text-align:center;") Ajouter un film
+            
+    form(method="post")(style="width:700px; margin:0 auto;")
+        input(type="hidden" name="id_tmdb" id="id_tmdb")
+        input.form-control.basicAutoComplete(type="text" id="title" name="title" autocomplete="off" value=title placeholder="Titre du film")
+        div#parentMoviesList
+            ul#moviesList
+        input.form-control(type="text" id="path" name="path" autocomplete="off" value=path placeholder="Path du film")
+        input.form-control(type="text" id="affiche" name="affiche" value=affiche placeholder="Url de l'affiche")
+        input.form-control(type="number" id="year" name="year" min="1900" max=new Date().getFullYear()+1 value=year placeholder="Année de production")
+        input.form-control(type="text" id="genre" name="genre" value=genre placeholder="Genre (action, science-fiction, comédie, ...)")
+        input.form-control(type="text" id="actors" name="actors" value=actors placeholder="Liste des acteurs")
+        textarea.form-control(type="synopsis" id="synopsis" name="synopsis" placeholder="Synopsis")= synopsis
+        div(style="text-align:center;")
+            button.btn.btn-primary(type="submit") Ajouter le film
+
+    template#movieChoice
+        li
+            img(src="")
+            span.title
+ 
+ 
+block javascript
+    script const ApiKey = #{process.env.API_KEY_TMDB}
+    script(src="/javascript/admin/movies/add.js")

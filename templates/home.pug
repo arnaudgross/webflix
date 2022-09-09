@@ -1,0 +1,29 @@
+extends layout.pug
+
+block content
+
+    h2 New Releases
+
+    div(style="margin-bottom:60px")
+        a(href="?cat=animation" class=(cat == 'animation' ? 'btn-primary' : '')).btn.btn-border Animation
+        a(href="?cat=comédie" class=(cat == 'comédie' ? 'btn-primary' : '')).btn.btn-border Comédie
+        a(href="?cat=drame" class=(cat == 'drame' ? 'btn-primary' : '')).btn.btn-border Drame
+        a(href="?cat=crime" class=(cat == 'crime' ? 'btn-primary' : '')).btn.btn-border Crime
+        a(href="?cat=action" class=(cat == 'action' ? 'btn-primary' : '')).btn.btn-border Action
+        a(href="?cat=aventure" class=(cat == 'aventure' ? 'btn-primary' : '')).btn.btn-border Aventure
+        a(href="?cat=fantastique" class=(cat == 'fantastique' ? 'btn-primary' : '')).btn.btn-border Fantastique
+        a(href="?cat=science-fiction" class=(cat == 'science-fiction' ? 'btn-primary' : '')).btn.btn-border Sci-Fi
+
+        if(cat != '')
+            a(href="/" style="border:none;").btn.btn-text X
+
+    if movies
+        section.movies-list
+            each movie in movies
+                a(href=("/movies/" + movie.path))
+                    article
+                        img(src=movie.affiche)
+                        h3=movie.title
+                        small=movie.genre
+    else
+        div=error

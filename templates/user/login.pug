@@ -1,0 +1,10 @@
+extends ../layout.pug
+ 
+block content   
+    h2 Connexion
+ 
+    form(method="post" style="width:600px")
+        input.form-control(type="email" id="email" name="email" placeholder="Votre adresse email" value=email)
+        input.form-control(type="password" id="password" name="password" placeholder="Votre mot de passe")
+        input.form-control(type="text" id="doubleauth" name="doubleauth" placeholder="Code de double authentification")
+        button.btn.btn-primary(type="submit") Se connecter

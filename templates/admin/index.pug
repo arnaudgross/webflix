@@ -1,0 +1,19 @@
+extends layout.pug
+
+block content
+    div.page-title
+        h2 Liste des films
+        a(href="/admin/movies/add").btn + Ajouter un film
+
+    if movies
+        section.movies-list
+            each movie in movies
+                a(href=("admin/movies/" + movie.path))
+                    article
+                        img(src=movie.affiche)
+                        div
+                            h3=movie.title
+                            small=movie.genre
+                            p=movie.synopsis
+    else
+        div=error

@@ -1,0 +1,13 @@
+extends ../layout.pug
+ 
+block content   
+    h2 Votre profile
+    //h2 Profile de #{session.user.firstname} #{session.user.lastname}
+
+    p
+        strong #{user.firstname} #{user.lastname}
+        span= user.email
+        div= user.date
+
+    div
+        a(href="/doubleauth").btn.btn-primary Activer la double authentification

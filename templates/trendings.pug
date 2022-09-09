@@ -1,0 +1,15 @@
+extends layout.pug
+
+block content
+    h2 Trendings
+
+    if movies
+        section.movies-list
+            each movie in movies
+                a(href="/movies")
+                    article
+                        img(src=movie.affiche)
+                        h3=movie.title
+                        small=movie.genre
+    else
+        div=error
